@@ -1,0 +1,11 @@
+#container{
+    border: 2px solid;
+    display: flex;
+    flex-wrap: wrap;
+}
+.div{
+    border: 1px solid;
+    width: 14px;
+    height: 14px;
+    
+}
