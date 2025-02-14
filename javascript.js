@@ -1,4 +1,3 @@
-
 function createDivs(){
     const container = document.getElementById('container');
     container.style.width = '256px';
@@ -33,4 +32,11 @@ function rainbow(){
         6: "violet",
     };
     return(colorConditions[prod]);
+}
+
+function clearGrid(){
+    const divs = document.getElementsByClassName('div');
+    for (let i = 0; i < divs.length; i++) {
+        divs[i].style.backgroundColor = "white"; // Reset background color
+    }
 }
