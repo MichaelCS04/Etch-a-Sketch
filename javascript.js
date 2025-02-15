@@ -1,21 +1,22 @@
-function createDivs(){
+function createDivs(size=16){
     const container = document.getElementById('container');
-    container.style.width = '256px';
-    container.style.height = '256px';
+    container.innerHTML = ''
+    container.style.width = '300px';
+    container.style.height = '300px';
 
-    for (let i = 0; i < 256; i++) {
-        const div = document.createElement("div")
-        div.classList.add("div")
-        div.classList.add("hoverFeature")
-        div.addEventListener(
-            "mouseover", () => {
+    const divSize = 300 / size; // Calculate size of each div
 
-                div.style.backgroundColor = rainbow()
-            });
-        container.appendChild(div)
+    for (let i = 0; i < size * size; i++) { // Create grid cells
+        const div = document.createElement("div");
+        div.classList.add("div", "hoverFeature");
+        div.style.width = `${divSize}px`;
+        div.style.height = `${divSize}px`;
+        div.addEventListener("mouseover", () => {
+            div.style.backgroundColor = rainbow();
+        });
+        container.appendChild(div);
+    }
 
-        
-      }
     
 }
 createDivs()
@@ -38,5 +39,13 @@ function clearGrid(){
     const divs = document.getElementsByClassName('div');
     for (let i = 0; i < divs.length; i++) {
         divs[i].style.backgroundColor = "white"; // Reset background color
+    }
+}
+
+function changeGrid(){let size = parseInt(prompt("Enter grid size (e.g., 16 for 16x16):"), 10);
+    if (size && size > 0 && size <= 100) { // Limit to avoid performance issues
+        createDivs(size);
+    } else {
+        alert("Invalid input. Enter a number between 1 and 100.");
     }
 }
